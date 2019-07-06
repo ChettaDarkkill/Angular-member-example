@@ -7,7 +7,7 @@ export class AlertService
    notify(message: string, type: string = 'warning') {
       $.notify({
         // options
-        title: 'แจ้งเตือนจากระบบ : ',
+        title: 'แจ้งเตือน : ',
         message: message
       },{
         // settings

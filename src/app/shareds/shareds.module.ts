@@ -7,6 +7,7 @@ import { AuthSidebarComponent } from './components/auth-sidebar/auth-sidebar.com
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AlertService } from './services/alert.service';
+import { AccountService } from './services/account.service';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { AlertService } from './services/alert.service';
      FormsModule
   ],
   providers: [
-    AlertService
+    AlertService,
+    AccountService
   ]
 
 })

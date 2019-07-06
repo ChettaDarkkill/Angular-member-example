@@ -5,12 +5,15 @@ import { AuthNavbarComponent } from './components/auth-navbar/auth-navbar.compon
 import { AuthContentComponent } from './components/auth-content/auth-content.component';
 import { AuthSidebarComponent } from './components/auth-sidebar/auth-sidebar.component';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     BsDropdownModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [
     AuthNavbarComponent,
@@ -21,7 +24,9 @@ import { RouterModule } from '@angular/router';
      AuthNavbarComponent,
      AuthSidebarComponent,
      BsDropdownModule,
-     AuthContentComponent
+     AuthContentComponent,
+     ReactiveFormsModule,
+     FormsModule
   ]
 
 })

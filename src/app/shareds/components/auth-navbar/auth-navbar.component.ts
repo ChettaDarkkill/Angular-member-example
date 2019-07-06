@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AppURL } from '../../../app.url';
 import { AuthURL } from '../../../authentication/authentication.url';
+import { Router } from '@angular/router';
+import { AuthenService } from '../../../services/authen.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-auth-navbar',
@@ -9,9 +12,19 @@ import { AuthURL } from '../../../authentication/authentication.url';
 })
 export class AuthNavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private authen: AuthenService,
+    private alert: AlertService
+  ) { }
 
   ngOnInit() {
+  }
+
+  onLogout() {
+     this.alert.notify('ออกจากระบบสำเร็จ', 'info')
+     this.authen.clearAuthenticated()
+     this.router.navigate(['/', AppURL.Login])
   }
 
   AppURL = AppURL

@@ -53,7 +53,7 @@
       <ul class="dropdown-menu settings-menu dropdown-menu-right">
         <li><a class="dropdown-item" [routerLink]="['/', AppURL.Authen, AuthURL.Setting]"><i class="fa fa-cog fa-lg"></i> ตั้งค่า</a></li>
         <li><a class="dropdown-item" [routerLink]="['/', AppURL.Authen, AuthURL.Profile]"><i class="fa fa-user fa-lg"></i> ข้อมูลส่วนตัว</a></li>
-        <li><a class="dropdown-item" [routerLink]="['/', AppURL.Login]"><i class="fa fa-sign-out fa-lg"></i> ออกจากระบบ</a></li>
+        <li><a class="dropdown-item" (click)="onLogout()"><i class="fa fa-sign-out fa-lg"></i> ออกจากระบบ</a></li>
       </ul>
     </li>
   </ul>

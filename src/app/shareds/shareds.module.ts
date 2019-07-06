@@ -6,6 +6,7 @@ import { AuthContentComponent } from './components/auth-content/auth-content.com
 import { AuthSidebarComponent } from './components/auth-sidebar/auth-sidebar.component';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AlertService } from './services/alert.service';
 
 @NgModule({
   imports: [
@@ -27,6 +28,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
      AuthContentComponent,
      ReactiveFormsModule,
      FormsModule
+  ],
+  providers: [
+    AlertService
   ]
 
 })

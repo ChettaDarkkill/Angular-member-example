@@ -52,7 +52,7 @@ export class RegisterComponent implements IRegisterComponent {
       })
   }
 
-  // สร้างรายละเอียดเอง
+  // สร้าง validate เอง
   private comparePassword(passwordField: string) {
     return function(confirm_password: AbstractControl) {
       if(!confirm_password.parent) return

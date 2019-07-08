@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { IProfileComponent } from './profile.interface';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { AccountService } from '../../../shareds/services/account.service';
+import { AuthenService } from '../../../services/authen.service';
+import { AlertService } from '../../../shareds/services/alert.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,13 +12,48 @@ import { IProfileComponent } from './profile.interface';
 })
 export class ProfileComponent implements IProfileComponent {
 
-  positionItems: any[] = [
-    'Frontend Developer',
-    'Backend Developers'
-  ];
-  constructor() { }
+  form: FormGroup;
 
-  ngOnInit() {
+  positionItems: any[] = [
+    'Fronend Developer',
+    'Backend Developer'
+  ];
+  constructor(
+    private builder: FormBuilder,
+    private account: AccountService,
+    private authen: AuthenService,
+    private alert: AlertService
+  ) {
+    this.initialCreateFormData()
+    this.initialLoadUpdateFormData()
+  }
+
+  onSubmit(): void {
+    console.log(this.form.value)
+  }
+
+  private initialCreateFormData() {
+    this.form = this.builder.group({
+       email: [''],
+       firstname: [''],
+       lastname: [''],
+       position: [''],
+       image: [null]
+    })
+    this.form.get('email').disable()
+  }
+
+  private initialLoadUpdateFormData() {
+    this.account
+      .getUserLogin(this.authen.getAuthenticated())
+      .then(user => {
+           this.form.controls['email'].setValue(user.email)
+           this.form.controls['firstname'].setValue(user.firstname)
+           this.form.controls['lastname'].setValue(user.lastname)
+           this.form.controls['position'].setValue(user.position)
+           this.form.controls['image'].setValue(user.image)
+      })
+      .catch(err => this.alert.notify(err.Message))
   }
 
 }

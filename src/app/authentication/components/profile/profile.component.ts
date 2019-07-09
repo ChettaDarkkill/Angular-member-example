@@ -32,6 +32,17 @@ export class ProfileComponent implements IProfileComponent {
     console.log(this.form.value)
   }
 
+  onConvertImage(input: HTMLInputElement): void {
+    const imageControl = this.form.controls['image']
+    imageControl.setValue(null)
+    if(input.files.length == 0) return
+    const reader = new FileReader()
+    reader.readAsDataURL(input.files[0])
+    reader.addEventListener('load', () => {
+      imageControl.setValue(reader.result)
+    })
+  }
+
   private initialCreateFormData() {
     this.form = this.builder.group({
        email: [''],
